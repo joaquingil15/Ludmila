@@ -96,7 +96,7 @@ print("---------------------------------------------")
 for i in range(3):
     nombre = input("Ingrese su nombre y apellido: ").capitalize()
     dni = (input("Ingrese su DNI: "))
-    envio = input("Ingrese su dirección: ")
+    direccion = input("Ingrese su dirección: ")
     while len(dni) <= 7:
         dni = input("Ingrese un DNI válido")
     telefono = int(input("Ingrese su telefono: "))
@@ -241,6 +241,7 @@ for i in range(3):
         if cant_cuot > 3:
 
             subtotal = subtotal*1.05
+        subtotal = round(subtotal,2)
 
             print("____________________________")
 
