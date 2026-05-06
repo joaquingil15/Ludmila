@@ -152,7 +152,7 @@ for i in range(3):
             cont_tacos = cont_tacos + 1
             if tacos > max_calzado:
                  max_calzado = tacos
-        else:
+          elif opcion == "CALZADO":
           tipo_accesorio = input ("ELIJA UN ACCESORIO (COLLARES/ANILLOS/AROS/PULSERAS): ").upper()
 
           while tipo_accesorio != "COLLARES" and tipo_accesorio != "ANILLOS" and tipo_accesorio != "AROS" and tipo_accesorio != "PULSERAS":
