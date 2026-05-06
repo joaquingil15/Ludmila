@@ -100,8 +100,8 @@ for i in range(3):
     while len(dni) <= 7:
         dni = input("Ingrese un DNI válido")
     telefono = (input("Ingrese su telefono: "))
-    while len(telefono) <= 8 and len(telefono) <= 15:
-        dni = input("Ingrese un numero de telefono válido")
+    while len(telefono) < 8 and len(telefono) < 15:
+        dni = input("Ingrese un numero de telefono válido: ")
     print("---------------------------------------------")
     print("Bienvenido", nombre)
     seguir = input("¿quiere empezar a comprar? ").upper()
