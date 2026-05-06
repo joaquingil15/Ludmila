@@ -50,10 +50,6 @@ cont_aros = 0
 pulseras = 7500 
 cont_pulseras = 0
 
-"""envios"""
-CABA = 3000
-CONOURBANO = 4500
-INTERIOR = 6500
 
 
 
@@ -189,7 +185,7 @@ for i in range(3):
             if pulseras > max_accesorios:
               max_accesorios = pulseras
         seguir = input("¿Desea seguir comprando? (SI/NO): ").upper()
-    total = sumador_prendas
+    total = sumador_prendas + sumador_accesorios + sumador_calzado
     """envio"""
     print(""" Disponemos de envios a domicilio:
     CABA: $3000 / CONOURBANO: $4500 / INTERIOR: $6500""")
@@ -199,11 +195,11 @@ for i in range(3):
         while localidad != "CABA" and localidad != "CONOURBANO" and localidad != "INTERIOR":
             localidad = input("Ingrese una localidad válida: ")
         if localidad == "CABA":
-            total = total + CABA
+            total = total + 3000
         elif localidad == "CONOURBANO":
-            total = total + CONOURBANO
+            total = total + 4500
         elif localidad == "INTERIOR":
-            total = total + INTERIOR
+            total = total + 6500
     
 
     """Factura"""
