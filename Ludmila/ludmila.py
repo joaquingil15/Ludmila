@@ -57,11 +57,7 @@ print("----------------------------------------------")
 
 """DATOS PERSONALES"""
 
-nombre = input("Ingrese su nombre y apellido: ").capitalize()
-dni = int(input("Ingrese su DNI: "))
-while len(dni) <=6:
-    dni = input("Ingrese un DNI válido: ")
-telefono = int(input("Ingrese su telefono: "))
+
 
 print("""NUESTROS PRODUCTOS
 TALLES: S (pequeño), M (Mediano), L (Grande) y XL (Extra Grande) 
@@ -95,9 +91,14 @@ Posibilidad de recargo y cuánto: 5% más de 3 cuotas.
 """)
 
 print("---------------------------------------------")
-for i in range(3):
-    seguir = input("¿Quiere empezar a comprar(Si/No)? ").upper()
 
+for i in range(3):
+    nombre = input("Ingrese su nombre y apellido: ").capitalize()
+    dni = int(input("Ingrese su DNI: "))
+    telefono = int(input("Ingrese su telefono: "))
+    print("---------------------------------------------")
+    print("Bienvenido", nombre)
+    seguir = input("¿quiere empezar a comprar? ").upper()
     while seguir == "SI":
         opcion = input("ELIJA QUE QUIERE (PRENDAS/CALZADO/ACCESORIO): ").upper()
 
@@ -184,41 +185,121 @@ for i in range(3):
         seguir = input("¿Desea seguir comprando? (SI/NO): ").upper()
     
     
-    
+    """Factura"""
+
     cant_factura =+1
-    total_prendas = cont_remeras + cont_buzos + cont_jeans
+
     total_calzado = cont_botas_texanas + cont_tacos
+
     total_accesorios = cont_collares + cont_anillos + cont_aros + cont_pulseras
-    total = total_prendas+total_calzado+total_accesorios
-    
+
+    total = sumador_prendas
+
+    subtotal = total
+
     if total_accesorios > 0 and total_calzado > 0:
+
         subtotal = total*0.93 #descuento del 7%
-    
+
     tipo_pago = input("Como desea abonar( Debito/Efectivo/Credito): ").lower()
-    
-    while tipo_pago != "debito" and tipo_pago != "efectvo" and tipo_pago != "credito":
+
+    while tipo_pago != "debito" and tipo_pago != "efectivo" and tipo_pago != "credito":
+
         tipo_pago = input("Error - Como desea abonar( Debito/Efectivo/Credito): ").lower()
+
     if tipo_pago == "credito":
+
         cant_cuot = int(input("Numero de cuotas(Mas de 3 cuotas tiene recargo del 5%): "))
+
         while cant_cuot < 0 and cant_cuot > 24:
+
             cant_cuot = int(input("Error - Numero de cuotas(Mas de 3 cuotas tiene recargo del 5%): "))
+
         if cant_cuot > 3:
+
             subtotal = subtotal*1.05
+
+            print("____________________________")
+
+            print("Numero de factura",cant_factura)
+
+            print("Dni:",dni)
+
+            print("Numero de telefono:",telefono)
+
+            print("Nombre del negocio: Ludmila")  
+
+            print("Mail: ludmila@gmail.com") 
+
+            print("Teléfono: 11 4875-8574")  
+
+            print("CUIT: 30-68229475-7 ")
+
+            print("____________________________")
+
+            print("Total:",total)
+
+            print("Subtotal:",subtotal)
+
             print("Subtotal:",subtotal,"Valor de cada cuota:",subtotal/cant_cuot)
+
+            print("____________________________")
+ 
         else:
+
+            print("____________________________")
+
+            print("Numero de factura",cant_factura)
+
+            print("Dni:",dni)
+
+            print("Numero de telefono:",telefono)
+
+            print("Nombre del negocio: Ludmila")
+
+            print("Mail: ludmila@gmail.com") 
+
+            print("Teléfono: 11 4875-8574")  
+
+            print("CUIT: 30-68229475-7 ")
+
+            print("____________________________")
+
+            print("Total:",total)
+
+            print("Subtotal:",subtotal)
+
             print("Subtotal:",subtotal,"Valor de cada cuota:",subtotal/cant_cuot)
 
-    print("____________________________")
-    print("Numero de factura",cant_factura)
-    print("Dni:",dni)
-    print("Numero de telefono:",telefono)
-    print("____________________________")
-    print("Total:",total)
-    print("Subtotal:",subtotal)
-    if cant_cuot > 1:
-        print("Valor por cuota:",subtotal/cant_cuot)
-    print("____________________________")
+            print("____________________________")
 
+    else:
+
+            print("____________________________")
+
+            print("Numero de factura",cant_factura)
+
+            print("Dni:",dni)
+
+            print("Numero de telefono:",telefono)
+
+            print("Nombre del negocio: Ludmila") 
+
+            print("Mail: ludmila@gmail.com") 
+
+            print("Teléfono: 11 4875-8574")  
+
+            print("CUIT: 30-68229475-7 ")
+
+            print("____________________________")
+
+            print("Total:",total)
+
+            print("Subtotal:",subtotal)
+
+            print("____________________________")
+
+ 
 
     
 
