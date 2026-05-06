@@ -99,8 +99,8 @@ for i in range(3):
     direccion = input("Ingrese su dirección: ")
     while len(dni) <= 7:
         dni = input("Ingrese un DNI válido")
-    telefono = int(input("Ingrese su telefono: "))
-    while len(telefono) <= 8 or len(telefono) <= 15:
+    telefono = (input("Ingrese su telefono: "))
+    while len(telefono) <= 8 and len(telefono) <= 15:
         dni = input("Ingrese un numero de telefono válido")
     print("---------------------------------------------")
     print("Bienvenido", nombre)
@@ -241,7 +241,7 @@ for i in range(3):
         if cant_cuot > 3:
 
             subtotal = subtotal*1.05
-        subtotal = round(subtotal,2)
+            subtotal = round(subtotal,2)
 
             print("____________________________")
             print("Numero de factura",cant_factura)
