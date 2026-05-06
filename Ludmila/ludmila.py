@@ -107,6 +107,9 @@ for i in range(3):
                 talles = input("ELIJA UN TALLE S/M/L/XL: ").upper()
             
             prendas = input("ELIJA UNA PRENDA REMERAS/BUZOS/JEANS: ").upper()
+            while prendas != "REMERAS" and prendas != "BUZOS" and prendas != "JEANS":
+                print("ERROR")
+                prendas = input("ELIJA UNA PRENDA REMERAS/BUZOS/JEANS: ").upper()    
             if prendas == "REMERAS":
                 print("Remera talle: ",talles)
                 sumador_prendas = sumador_prendas + remeras
@@ -119,10 +122,11 @@ for i in range(3):
                 cont_buzos = cont_buzos + 1
                 if buzos > max_prendas:
                  max_prendas = buzos
-            else:
+            elif prendas == "JEANS":
                 print("Jeans talle: ",talles)
                 sumador_prendas = sumador_prendas + jeans
                 cont_jeans = cont_jeans + 1
+            
                 if jeans > max_prendas:
                  max_prendas = jeans
 
