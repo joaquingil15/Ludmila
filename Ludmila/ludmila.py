@@ -244,85 +244,75 @@ for i in range(3):
         subtotal = round(subtotal,2)
 
             print("____________________________")
-
             print("Numero de factura",cant_factura)
-
             print("Dni:",dni)
-
+            print("Direccion:",direccion)
             print("Numero de telefono:",telefono)
-
             print("Nombre del negocio: Ludmila")  
-
             print("Mail: ludmila@gmail.com") 
-
             print("Teléfono: 11 4875-8574")  
-
             print("CUIT: 30-68229475-7 ")
-
             print("____________________________")
-
             print("Total:",total)
-
             print("Subtotal:",subtotal)
-
             print("Subtotal:",subtotal,"Valor de cada cuota:",subtotal/cant_cuot)
-
+            print("Se aplico un 5% de recargo")
+            if total_accesorios > 0 and total_calzado > 0:
+                print("Se aplico un 7% de descuento")
+            if localidad == "CABA":
+                print("Se cobro $3000 de envio")
+            elif localidad == "CONOURBANO":
+                print("Se cobro $4500 de envio")
+            elif localidad == "INTERIOR":
+                print("Se cobro $6500 de envio")
             print("____________________________")
  
         else:
-
             print("____________________________")
-
             print("Numero de factura",cant_factura)
-
             print("Dni:",dni)
-
+            print("Direccion:",direccion)
             print("Numero de telefono:",telefono)
-
             print("Nombre del negocio: Ludmila")
-
             print("Mail: ludmila@gmail.com") 
-
             print("Teléfono: 11 4875-8574")  
-
             print("CUIT: 30-68229475-7 ")
-
             print("____________________________")
-
             print("Total:",total)
-
             print("Subtotal:",subtotal)
-
             print("Subtotal:",subtotal,"Valor de cada cuota:",subtotal/cant_cuot)
-
+            if total_accesorios > 0 and total_calzado > 0:
+                print("Se aplico un 7% de descuento")
+            if localidad == "CABA":
+                print("Se cobro $3000 de envio")
+            elif localidad == "CONOURBANO":
+                print("Se cobro $4500 de envio")
+            elif localidad == "INTERIOR":
+                print("Se cobro $6500 de envio")
             print("____________________________")
-
     else:
-
             print("____________________________")
-
             print("Numero de factura",cant_factura)
-
             print("Dni:",dni)
-
+            print("Direccion:",direccion)
             print("Numero de telefono:",telefono)
-
+            print()
             print("Nombre del negocio: Ludmila") 
-
             print("Mail: ludmila@gmail.com") 
-
             print("Teléfono: 11 4875-8574")  
-
             print("CUIT: 30-68229475-7 ")
-
             print("____________________________")
-
             print("Total:",total)
-
             print("Subtotal:",subtotal)
-
+            if total_accesorios > 0 and total_calzado > 0:
+                print("Se aplico un 7% de descuento")
+            if localidad == "CABA":
+                print("Se cobro $3000 de envio")
+            elif localidad == "CONOURBANO":
+                print("Se cobro $4500 de envio")
+            elif localidad == "INTERIOR":
+                print("Se cobro $6500 de envio")
             print("____________________________")
-
  
 
     
