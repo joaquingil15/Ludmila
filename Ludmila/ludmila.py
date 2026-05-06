@@ -58,7 +58,9 @@ print("----------------------------------------------")
 """DATOS PERSONALES"""
 
 nombre = input("Ingrese su nombre y apellido: ").capitalize()
-dni = int(input("Ingrese su DNI: "))
+dni = (input("Ingrese su DNI: "))
+while len(dni) <=6 or dni != int:
+    dni = (input("Ingrese un DNI válido: "))
 telefono = int(input("Ingrese su telefono: "))
 
 print("""NUESTROS PRODUCTOS
