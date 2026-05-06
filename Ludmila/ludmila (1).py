@@ -95,8 +95,12 @@ print("---------------------------------------------")
 
 for i in range(3):
     nombre = input("Ingrese su nombre y apellido: ").capitalize()
-    dni = int(input("Ingrese su DNI: "))
+    dni = (input("Ingrese su DNI: "))
+    while len(dni) <= 7:
+        dni = input("Ingrese un DNI válido")
     telefono = int(input("Ingrese su telefono: "))
+    while len(telefono) <= 8 or len(telefono) <= 15:
+        dni = input("Ingrese un numero de telefono válido")
     print("---------------------------------------------")
     print("Bienvenido", nombre)
     seguir = input("¿quiere empezar a comprar? ").upper()
