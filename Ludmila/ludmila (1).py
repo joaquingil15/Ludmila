@@ -96,6 +96,7 @@ print("---------------------------------------------")
 for i in range(3):
     nombre = input("Ingrese su nombre y apellido: ").capitalize()
     dni = (input("Ingrese su DNI: "))
+    envio = input("Ingrese su dirección: ")
     while len(dni) <= 7:
         dni = input("Ingrese un DNI válido")
     telefono = int(input("Ingrese su telefono: "))
@@ -213,6 +214,7 @@ for i in range(3):
     total_calzado = cont_botas_texanas + cont_tacos
 
     total_accesorios = cont_collares + cont_anillos + cont_aros + cont_pulseras
+    
 
     
 
