@@ -5,8 +5,12 @@
 
 """VARIABLES"""
 
+"""Factura"""
+
+cant_factura = 0
+
 """prendas"""
-seguir = "SI"
+
 sumador_prendas = 0
 max_prendas = -9999
 remeras = 15000
@@ -31,13 +35,20 @@ cont_tacos = 0
 
 """accesorios"""
 
+sumador_accesorios = 0
+max_accesorios = -9999
+
 collares = 9000 
+cont_collares = 0
 
 anillos = 8000 
+cont_anillos = 0
 
-aros =6000 
+aros = 6000 
+cont_aros = 0
 
-pulseras =7500 
+pulseras = 7500 
+cont_pulseras = 0
 
 
 
@@ -82,62 +93,128 @@ Posibilidad de recargo y cuánto: 5% más de 3 cuotas.
 """)
 
 print("---------------------------------------------")
+for i in range(3):
+    seguir = input("¿Quiere empezar a comprar(Si/No)? ").upper()
 
-while seguir == "SI":
-    opcion = input("ELIJA QUE QUIERE (PRENDAS/CALZADO/ACCESORIO): ").upper()
+    while seguir == "SI":
+        opcion = input("ELIJA QUE QUIERE (PRENDAS/CALZADO/ACCESORIO): ").upper()
 
-    if opcion == "PRENDAS":
-        talles = input("ELIJA UN TALLE S/M/L/XL: ").upper()
-        
-        while talles != "S" and talles != "M" and talles != "L" and talles != "XL":
-            print("ERROR - ELIGE ENTRE UN TALLE S/M/L/XL")
+        if opcion == "PRENDAS":
             talles = input("ELIJA UN TALLE S/M/L/XL: ").upper()
-        
-        prendas = input("ELIJA UNA PRENDA REMERAS/BUZOS/JEANS: ").upper()
-        if prendas == "REMERAS":
-            print("Remera talle: ",talles)
-            sumador_prendas = sumador_prendas + remeras
-            cont_remeras = cont_remeras + 1
-            if remeras > max_prendas:
-             max_prendas = remeras
-        elif prendas == "BUZOS":
-            print("Buzos talle: ",talles)
-            sumador_prendas = sumador_prendas + buzos
-            cont_buzos = cont_buzos + 1
-            if buzos > max_prendas:
-             max_prendas = buzos
+            
+            while talles != "S" and talles != "M" and talles != "L" and talles != "XL":
+                print("ERROR - ELIGE ENTRE UN TALLE S/M/L/XL")
+                talles = input("ELIJA UN TALLE S/M/L/XL: ").upper()
+            
+            prendas = input("ELIJA UNA PRENDA REMERAS/BUZOS/JEANS: ").upper()
+            if prendas == "REMERAS":
+                print("Remera talle: ",talles)
+                sumador_prendas = sumador_prendas + remeras
+                cont_remeras = cont_remeras + 1
+                if remeras > max_prendas:
+                 max_prendas = remeras
+            elif prendas == "BUZOS":
+                print("Buzos talle: ",talles)
+                sumador_prendas = sumador_prendas + buzos
+                cont_buzos = cont_buzos + 1
+                if buzos > max_prendas:
+                 max_prendas = buzos
+            else:
+                print("Jeans talle: ",talles)
+                sumador_prendas = sumador_prendas + jeans
+                cont_jeans = cont_jeans + 1
+                if jeans > max_prendas:
+                 max_prendas = jeans
+
+
+        elif opcion == "CALZADO":
+         eleccion_talles_calzado = int(input("ELIJA UN TALLE 36/37/38/40: "))
+
+         while eleccion_talles_calzado != 36 and eleccion_talles_calzado != 37 and eleccion_talles_calzado != 38 and  eleccion_talles_calzado != 40:
+            eleccion_talles_calzado = int(input("ERROR - ELIJA UN TALLE 36/37/38/40: "))
+
+         eleccion_calzado = input("ELIJA UN TIPO DE CALZADO BOTAS TEXANAS/TACOS ").upper()
+         if eleccion_calzado == "BOTAS TEXANAS":
+            print("BOTAS TEXANAS TALLE: ",eleccion_talles_calzado)
+            sumador_calzado = sumador_calzado + botas_texanas
+            cont_botas_texanas = cont_botas_texanas + 1
+            if botas_texanas > max_calzado:
+               max_calzado = botas_texanas
+         elif eleccion_calzado == "TACOS":
+            print("TACOS: ",eleccion_talles_calzado)
+            sumador_calzado = sumador_calzado + tacos
+            cont_tacos = cont_tacos + 1
+            if tacos > max_calzado:
+                 max_calzado = tacos
         else:
-            print("Jeans talle: ",talles)
-            sumador_prendas = sumador_prendas + jeans
-            cont_jeans = cont_jeans + 1
-            if jeans > max_prendas:
-             max_prendas = jeans
+          tipo_accesorio = input ("ELIJA UN ACCESORIO (COLLARES/ANILLOS/AROS/PULSERAS): ").upper()
+
+          while tipo_accesorio != "COLLARES" and tipo_accesorio != "ANILLOS" and tipo_accesorio != "AROS" and tipo_accesorio != "PULSERAS":
+            print ("ERROR - DEBE ELEGIR ACCESORIOS ENTRE COLLAR/ANILLO/AROS/PULSERA")
+            tipo_accesorio = input ("ELIJA UN ACCESORIO (COLLARES/ANILLOS/AROS/PULSERAS): ").upper()
+
+          if tipo_accesorio == "COLLARES":
+            sumador_accesorios = sumador_accesorios + collares
+            cont_collares = cont_collares + 1 
+            if collares > max_accesorios:
+              max_accesorios = collares
+          elif tipo_accesorio == "ANILLOS":
+            sumador_accesorios = sumador_accesorios + anillos
+            cont_anillos = cont_anillos + 1
+            if anillos > max_accesorios:
+              max_accesorios = anillos
+          elif tipo_accesorio == "AROS":
+            sumador_accesorios = sumador_accesorios + aros
+            cont_aros = cont_aros + 1
+            if aros > max_accesorios:
+              max_accesorios = aros
+          else:
+            sumador_accesorios = sumador_accesorios + pulseras
+            cont_pulseras = cont_pulseras + 1
+            if pulseras > max_accesorios:
+              max_accesorios = pulseras
+        seguir = input("¿Desea seguir comprando? (SI/NO): ").upper()
+    
+    
+    
+    cant_factura =+1
+    total_prendas = cont_remeras + cont_buzos + cont_jeans
+    total_calzado = cont_botas_texanas + cont_tacos
+    total_accesorios = cont_collares + cont_anillos + cont_aros + cont_pulseras
+    total = total_prendas+total_calzado+total_accesorios
+    
+    if total_accesorios > 0 and total_calzado > 0:
+        subtotal = total*0.93 #descuento del 7%
+    
+    tipo_pago = input("Como desea abonar( Debito/Efectivo/Credito): ").lower()
+    
+    while tipo_pago != "debito" and tipo_pago != "efectvo" and tipo_pago != "credito":
+        tipo_pago = input("Error - Como desea abonar( Debito/Efectivo/Credito): ").lower()
+    if tipo_pago == "credito":
+        cant_cuot = int(input("Numero de cuotas(Mas de 3 cuotas tiene recargo del 5%): "))
+        while cant_cuot < 0 and cant_cuot > 24:
+            cant_cuot = int(input("Error - Numero de cuotas(Mas de 3 cuotas tiene recargo del 5%): "))
+        if cant_cuot > 3:
+            subtotal = subtotal*1.05
+            print("Subtotal:",subtotal,"Valor de cada cuota:",subtotal/cant_cuot)
+        else:
+            print("Subtotal:",subtotal,"Valor de cada cuota:",subtotal/cant_cuot)
+
+    print("____________________________")
+    print("Numero de factura",cant_factura)
+    print("Dni:",dni)
+    print("Numero de telefono:",telefono)
+    print("____________________________")
+    print("Total:",total)
+    print("Subtotal:",subtotal)
+    if cant_cuot > 1:
+        print("Valor por cuota:",subtotal/cant_cuot)
+    print("____________________________")
 
 
-    elif opcion == "CALZADO":
-     eleccion_talles_calzado = int(input("ELIJA UN TALLE 36/37/38/40"))
-
-     while eleccion_talles_calzado != 36 and eleccion_talles_calzado != 37 and eleccion_talles_calzado != 38 and  eleccion_talles_calzado != 40:
-        print("ERROR - ELIGE ENTRE UN TALLE 36/37/38/40")
-        eleccion_talles_calzado = int(input("ELIJA UN TALLE 36/37/38/40: "))
-
-     eleccion_calzado = input("ELIJA UN TIPO DE CALZADO BOTAS TEXANAS/TACOS ").upper()
-     if eleccion_calzado == "BOTAS TEXANAS":
-        print("BOTAS TEXANAS TALLE: ",eleccion_talles_calzado)
-        sumador_calzado = sumador_calzado + botas_texanas
-        cont_botas_texanas = cont_botas_texanas + 1
-        if botas_texanas > max_calzado:
-           max_calzado = botas_texanas
-     elif eleccion_calzado == "TACOS":
-        print("TACOS: ",eleccion_talles_calzado)
-        sumador_calzado = sumador_calzado + tacos
-        cont_tacos = cont_tacos + 1
-        if tacos > max_calzado:
-             max_calzado = tacos 
-    seguir = input("¿Desea seguir comprando? (SI/NO): ").upper()
+    
 
         
-
 """CUENTAS PRENDAS"""
 total_prendas = cont_remeras + cont_buzos + cont_jeans
 if total_prendas > 0:
@@ -162,8 +239,20 @@ else:
     por_botas_texanas = 0
     por_tacos = 0
 
-
-
+"""CUENTAS ACCESORIOS"""
+total_accesorios = cont_collares + cont_anillos + cont_aros + cont_pulseras
+if total_accesorios > 0:
+  promedio_accesorios = sumador_accesorios / total_accesorios
+  porcentaje_collares = cont_collares * 100 / total_accesorios
+  porcentaje_anillos = cont_anillos * 100 / total_accesorios
+  porcentaje_aros = cont_aros * 100 / total_accesorios
+  porcentaje_pulseras = cont_pulseras * 100 / total_accesorios
+else: 
+  promedio_accesorios = 0
+  porcentaje_collares = 0
+  porcentaje_anillos = 0
+  porcentaje_aros = 0
+  porcentaje_pulseras = 0
 
 
 print("TOTAL A PAGAR POR LAS PRENDAS $",sumador_prendas)
@@ -179,5 +268,10 @@ print("PROMEDIO GASTADO EN CALZADO: $", prom_calzado)
 print("PORCENTAJE DE BOTAS TEXANAS VENDIDAS: ", por_botas_texanas, "%")
 print("PORCENTAJE DE TACOS VENDIDOS: ", por_tacos, "%")
 
-
-
+print("TOTAL A PAGAR POR LOS ACCESORIOS: $",sumador_accesorios)
+print("ACCESORIO MÁS CARO: $",max_accesorios)
+print("PROMEDIO GASTADO EN ACCESORIOS: ",promedio_accesorios)
+print("PORCENTAJE DE COLLARES VENDIDOS: ",porcentaje_collares,"%")
+print("PORCENTAJE DE ANILLOS VENDIDOS: ",porcentaje_anillos,"%")
+print("PORCENTAJE DE AROS VENDIDOS: ",porcentaje_aros,"%")
+print("PORCENTAJE DE PULSERAS VENDIDAS: ",porcentaje_pulseras,"%")
