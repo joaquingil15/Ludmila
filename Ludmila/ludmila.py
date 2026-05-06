@@ -58,9 +58,7 @@ print("----------------------------------------------")
 """DATOS PERSONALES"""
 
 nombre = input("Ingrese su nombre y apellido: ").capitalize()
-dni = (input("Ingrese su DNI: "))
-while len(dni) <=6 or dni != int:
-    dni = (input("Ingrese un DNI válido: "))
+dni = int(input("Ingrese su DNI: "))
 telefono = int(input("Ingrese su telefono: "))
 
 print("""NUESTROS PRODUCTOS
@@ -152,11 +150,11 @@ for i in range(3):
             cont_tacos = cont_tacos + 1
             if tacos > max_calzado:
                  max_calzado = tacos
-          elif opcion == "CALZADO":
+        elif opcion == "ACCESORIO":
           tipo_accesorio = input ("ELIJA UN ACCESORIO (COLLARES/ANILLOS/AROS/PULSERAS): ").upper()
 
           while tipo_accesorio != "COLLARES" and tipo_accesorio != "ANILLOS" and tipo_accesorio != "AROS" and tipo_accesorio != "PULSERAS":
-            print ("ERROR - DEBE ELEGIR ACCESORIOS ENTRE COLLAR/ANILLO/AROS/PULSERA")
+            print ("ERROR - DEBE ELEGIR ACCESORIOS ENTRE COLLAR/ANILLO/AROS/PULSERAS")
             tipo_accesorio = input ("ELIJA UN ACCESORIO (COLLARES/ANILLOS/AROS/PULSERAS): ").upper()
 
           if tipo_accesorio == "COLLARES":
