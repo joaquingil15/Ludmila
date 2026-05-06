@@ -59,6 +59,8 @@ print("----------------------------------------------")
 
 nombre = input("Ingrese su nombre y apellido: ").capitalize()
 dni = int(input("Ingrese su DNI: "))
+while len(dni) <=6:
+    dni = input("Ingrese un DNI válido: ")
 telefono = int(input("Ingrese su telefono: "))
 
 print("""NUESTROS PRODUCTOS
@@ -138,6 +140,8 @@ for i in range(3):
             eleccion_talles_calzado = int(input("ERROR - ELIJA UN TALLE 36/37/38/40: "))
 
          eleccion_calzado = input("ELIJA UN TIPO DE CALZADO BOTAS TEXANAS/TACOS ").upper()
+         while eleccion_calzado != "BOTAS TEXANAS" and eleccion_calzado != "TACOS":
+            eleccion_calzado = input("ERROR - ELIJA UN CALZADO VÁLIDO BOTAS TEXANAS/TACOS: ").upper()
          if eleccion_calzado == "BOTAS TEXANAS":
             print("BOTAS TEXANAS TALLE: ",eleccion_talles_calzado)
             sumador_calzado = sumador_calzado + botas_texanas
