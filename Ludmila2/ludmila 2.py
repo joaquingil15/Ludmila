@@ -103,6 +103,41 @@ def porcentajes(t_p, t_c, t_a):
 
     return porc_prendas, porc_calzado, porc_accesorios
 
+def promedios(lista_cantidad, lista_precios):
+    total_pesos_prendas = 0
+    total_pesos_calzado = 0
+    total_pesos_accesorios = 0
+
+    for i in range(3):
+        total_pesos_prendas = total_pesos_prendas + lista_cantidad[i] * lista_precios[i]
+
+    for i in range(3, 5):
+        total_pesos_calzado = total_pesos_calzado + lista_cantidad[i] * lista_precios[i]
+
+    for i in range(5, 9):
+        total_pesos_accesorios = total_pesos_accesorios + lista_cantidad[i] * lista_precios[i]
+
+    t_p = total_prendas(lista_cantidad)
+    t_c = total_calzado(lista_cantidad)
+    t_a = total_accesorios(lista_cantidad)
+
+    if t_p > 0:
+        prom_p = total_pesos_prendas / t_p
+    else:
+        prom_p = 0
+
+    if t_c > 0:
+        prom_c = total_pesos_calzado / t_c
+    else:
+        prom_c = 0
+
+    if t_a > 0:
+        prom_a = total_pesos_accesorios / t_a
+    else:
+        prom_a = 0
+
+    return prom_p, prom_c, prom_a
+
 def envio(total):
     print(""" Disponemos de envios a domicilio:
     CABA: $3000 / CONURBANO: $4500 / INTERIOR: $6500""")
@@ -137,9 +172,9 @@ def seleccion(lista,lista_2,lista_3,lista_4): #recibo la lista desordenada
     return lista #devuelvo la lista ordenada
 
 def medio_pago():
-    tipo_pago = input("Como desea abonar( Debito/Efectivo/Credito): ").capitalize()
+    tipo_pago = input("Como desea abonar(Debito/Efectivo/Credito): ").capitalize()
     while tipo_pago != "Debito" and tipo_pago != "Efectivo" and tipo_pago != "Credito":
-        tipo_pago = input("Error - Como desea abonar( Debito/Efectivo/Credito): ").capitalize()
+        tipo_pago = input("Error - Como desea abonar(Debito/Efectivo/Credito): ").capitalize()
     return tipo_pago
   
 def credito(total):
@@ -153,11 +188,20 @@ def credito(total):
         subtotal = total
     return cuotas, subtotal
 
+def busqueda_lineal(lista,dato):
+    for i in range(len(lista)):
+        if lista[i] == dato:
+            return i
+    return -1
+    
+
 #listas
 facturas = []
 l_dni = []
 l_telefono = []
 l_total = []
+
+
 cargar_numeros_random(facturas)
 for c in range(3):
     lista_codigo = [1, 2, 3, 4, 5, 6, 7, 8, 9]
@@ -201,9 +245,12 @@ for c in range(3):
     t_c = total_calzado(lista_cantidad)
     t_a = total_accesorios(lista_cantidad)
 
+
     if t_c>0 and t_a>0:
         total = total*0.93 #descueto del 7%
     pp, pc, pa = porcentajes(t_p, t_c, t_a)
+
+    prom_p, prom_c, prom_a = promedios(lista_cantidad, lista_precios)
 
     #Tipos de pago 
 
@@ -232,10 +279,20 @@ for c in range(3):
             print("Se sumo el costo de envio de 4500$")
         elif loc == "Interior":
             print("Se sumo el costo de envio de 6500$")
-    print("El total de la compra es:",total)
-    print("Prendas:", pp, "%")
-    print("Calzado:", pc, "%")
-    print("Accesorios:", pa, "%")
+    print("El total de la compra es:", total)
+
+    if t_p > 0:
+        print("Porcentaje Prendas:", round(pp,2), "%")
+        print("Promedio gastado por prenda: $", round(prom_p,2))
+
+    if t_c > 0:
+        print("Porcentaje Calzado:", round(pc,2), "%")
+        print("Promedio gastado por calzado: $", round(prom_c,2))
+
+    if t_a > 0:
+        print("Porcentaje Accesorios:", round(pa,2), "%")
+        print("Promedio gastado por accesorio: $", round(prom_a,2))
+        
     if tipo_pago == "Credito":
         print("Subtotal",subtotal,"Valor de cada cuota:",subtotal/cuotas)
     separador()
@@ -250,11 +307,15 @@ seleccion(facturas,l_dni,l_telefono,l_total)
 usuarios = crear_matriz_2(facturas,l_dni,l_telefono,l_total)
 mostrar_matriz(usuarios)
 
+print("Facturas:", facturas)
 
 
-
-#hacer una lista con datos de cliente nro de factura y subtotal
-
-
-
+num_fact = int(input("Ingrese el codigo de la factura que quiere buscar: "))
+posicion = busqueda_lineal(facturas,num_fact)
+if posicion == -1:
+    num_fact = int(input("ERROR Al ENCONTRA - Ingrese el codigo de la factura que quiere buscar: "))
+    posicion = busqueda_lineal(facturas,num_fact)
+else:
+    print("Factura encontrada en la posicion:", posicion)
+    print("Factura:", usuarios[posicion])
 
