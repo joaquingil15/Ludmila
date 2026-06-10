@@ -6,7 +6,7 @@ import random
 def datos_cliente():
     nombre = input("Ingrese su nombre: ").capitalize()
     apellido = input("Ingrese su apellido: ").capitalize()
-    dni = (input("Ingrese su numero de dni: "))
+    dni = input("Ingrese su numero de dni: ")
     while len (dni) < 8 or len (dni) > 8:
         dni = input("ERROR - Ingrese un dni válido: ")
     direccion = input("Ingrese su dirección: ").capitalize()
