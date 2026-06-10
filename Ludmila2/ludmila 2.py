@@ -42,9 +42,21 @@ def datos_cliente():
 
 def crear_matriz(lista1,lista2,lista3,lista4):
     matriz = []
-    print("Codigo Producto Valor Cantidad")
+
+    print()
+    print("╔══════════════════════════════════════════════════════╗")
+    print("║                CATÁLOGO DE PRODUCTOS                ║")
+    print("╠════╦═════════════════╦════════════╦══════════════════╣")
+    print("║COD ║ PRODUCTO        ║ PRECIO     ║ CANTIDAD         ║")
+    print("╠════╬═════════════════╬════════════╬══════════════════╣")
+
     for i in range(len(lista1)):
-        matriz.append([lista1[i],lista2[i],lista3[i],lista4[i]])
+        matriz.append([lista1[i], lista2[i], lista3[i], lista4[i]])
+
+        print(f"║ {lista1[i]:<2} ║ {lista2[i]:<15} ║ ${lista3[i]:<8} ║ {lista4[i]:<16} ║")
+
+    print("╚════╩═════════════════╩════════════╩══════════════════╝")
+
     return matriz
 
 def crear_matriz_2(lista1,lista2,lista3,lista4):
@@ -74,10 +86,20 @@ def sumador_total(lista1,lista2):
         sumador+= lista2[i]*lista1[i]
     return sumador
 
-def mostrar_compra(lista,matriz):
+def mostrar_compra(lista, matriz):
+    print()
+    print("╔══════════════════════════════════════════════════╗")
+    print("║              PRODUCTOS COMPRADOS                ║")
+    print("╠════╦═════════════════╦═══════════╦══════════════╣")
+    print("║COD ║ PRODUCTO        ║ PRECIO    ║ CANTIDAD     ║")
+    print("╠════╬═════════════════╬═══════════╬══════════════╣")
+
     for i in range(len(lista)):
-        if lista[i]>0:
-            print(matriz[i])
+        if lista[i] > 0:
+            print(f"║ {matriz[i][0]:<2} ║ {matriz[i][1]:<15} ║ ${matriz[i][2]:<7} ║ {lista[i]:<12} ║")
+
+    print("╚════╩═════════════════╩═══════════╩══════════════╝")
+    print()
             
 def total_prendas(lista):
      t_p = 0
@@ -225,14 +247,17 @@ for c in range(3):
     lista_cantidad = lista_compras(lista_cantidad)
 
     n = input("Desea seguir comprando?(Si/No)").capitalize()
+
     while n == "Si":
+        matriz = crear_matriz(lista_codigo,lista_articulos,lista_precios,lista_cantidad)
+
         lista_cantidad = lista_compras(lista_cantidad)
+
         n = input("Desea seguir comprando?(Si/No)").capitalize()
 
     total = sumador_total(lista_cantidad,lista_precios)
 
-    matriz = crear_matriz(lista_codigo,lista_articulos,lista_precios,lista_cantidad)
-    mostrar_compra(lista_cantidad,matriz)
+    mostrar_compra(lista_cantidad, matriz)
 
     #Envio
     e = input("Quiere envio a domicilio(Si/No): ").capitalize()
@@ -261,7 +286,7 @@ for c in range(3):
     if tipo_pago == "Credito":
         cuotas, subtotal = credito(total)
 
-    print("____________________________")
+    print("\n════════════ FACTURA ════════════")
     print("Numero de factura",facturas[c-1])
     print("Dni:",dni)
     print("Direccion:",direccion)
