@@ -2,12 +2,6 @@
 
 import random
 
-#Funciones
-def separador():
-    print()
-    print("------------------------------------")
-    print()
-
 def validar_repetidos(lista, n):
     for i in range(len(lista)):
         if lista[i] == n:
@@ -30,17 +24,21 @@ def cargar_numeros_random(lista):
 def datos_cliente():
     nombre = input("Ingrese su nombre: ").capitalize()
     apellido = input("Ingrese su apellido: ").capitalize()
-    dni = input("Ingrese su numero de dni: ")
+    dni = input("Ingrese su número de dni: ")
     while len (dni) < 8 or len (dni) > 8:
         dni = input("ERROR - Ingrese un dni válido: ")
     direccion = input("Ingrese su dirección: ").capitalize()
-    telefono = input("Ingrese su número de teléfono: ")
+    telefono = input("Ingrese su número de teléfono, sin incluir su código de área: ")
     while len (telefono) < 8 or len (telefono) > 8:
-        telefono = input("ERROR - Ingrese un número de teléfono válido: ")
+        telefono = input("ERROR - Ingrese un número de teléfono válido, sin incluir su código de área: ")
     mail = input("Ingrese su mail: ").capitalize()
     return nombre, apellido, dni, direccion, telefono, mail
 
 def crear_matriz(lista1,lista2,lista3,lista4):
+    print()
+    print("-------------------------------------------")
+    print("A CONTINUACIÓN LES DEJAMOS TODA LA INFORMACIÓN SOBRE NUESTROS PRODUCTOS")
+    print()
     matriz = []
 
     print()
@@ -70,14 +68,18 @@ def mostrar_matriz(matriz):
     for i in range(len(matriz)):
         print(matriz[i])
                
-def lista_compras(lista): 
-    compra = int(input("Ingrese el codigo del producto que quiere comprar: ",))-1
+def lista_compras(lista):
+    print()
+    print("-----------------------------------")
+    print("AGREGUE AL CARRITO LO QUE GUSTE")
+    print()
+    compra = int(input("Ingrese el código del producto que quiere comprar: ")) - 1
     while compra < 0 or compra > 8:
-        compra = int(input("Error - Ingrese el codigo del producto que quiere comprar: "))
-    cantidad = int(input("Cuantos desea comprar: "))
-    while cantidad<=0:
-        cantidad = int(input("Error - Cuantos desea comprar: "))
-    lista_cantidad[compra]+=cantidad
+        compra = int(input("ERROR - Ingrese el código del producto que quiere comprar: "))
+    cantidad = int(input("¿Cuántos productos de dicha categoría quiere comprar?: "))
+    while cantidad <= 0:
+        cantidad = int(input("ERROR - ¿Cuántos productos de dicha categoría quiere comprar?: "))
+    lista_cantidad[compra] += cantidad
     return lista
 
 def sumador_total(lista1,lista2):
@@ -161,21 +163,26 @@ def promedios(lista_cantidad, lista_precios):
     return prom_p, prom_c, prom_a
 
 def envio(total):
-    print(""" Disponemos de envios a domicilio:
-    CABA: $3000 / CONURBANO: $4500 / INTERIOR: $6500""")
-    localidad = input("Donde quiere que sea el envio: CABA/CONURBANO/INTERIOR: ").capitalize()
+    print()
+    print("----------------------------------")
+    print("""DISPONEMOS DE ENVÍOS A DOMICILIO
+    - Caba --> $3000
+    - Conurbano --> $4500
+    - Interior --> $6500 """)
+    localidad = input("Elija la zona de envío --> Caba/ Conurbano/ Interior: ").capitalize()
     while localidad != "Caba" and localidad != "Conurbano" and localidad != "Interior":
-        localidad = input("ERROR - Donde quiere que sea el envio: CABA/CONURBANO/INTERIOR: ").capitalize()
+        localidad = input("ERROR - Elija la zona de envío --> Caba/ Conurbano/ Interior: ").capitalize()
     if localidad == "Caba":
         total = total + 3000
     elif localidad == "Conurbano":
         total = total + 4500
     elif localidad == "Interior":
         total = total + 6500
-    print("Se añadio costos de envio")
+    print()
+    print("- Se han añadido los costos de envío")
     return total, localidad
 
-def seleccion(lista,lista_2,lista_3,lista_4): #recibo la lista desordenada
+def seleccion(lista,lista_2,lista_3,lista_4): 
     for i in range(len(lista)-1):
         for j in range(i+1,len(lista)):
             if lista[i]>lista[j]:
@@ -191,19 +198,25 @@ def seleccion(lista,lista_2,lista_3,lista_4): #recibo la lista desordenada
                 aux = lista_4[i]
                 lista_4[i] = lista_4[j]
                 lista_4[j] = aux
-    return lista #devuelvo la lista ordenada
+    return lista 
 
 def medio_pago():
-    tipo_pago = input("Como desea abonar(Debito/Efectivo/Credito): ").capitalize()
+    print()
+    print("---------------------------")
+    print("EN EL SIGUIENTE PASO, REALICE EL PAGO")
+    tipo_pago = input("¿Cuál será su método de pago? --> Debito/ Efectivo/ Credito: ").capitalize()
     while tipo_pago != "Debito" and tipo_pago != "Efectivo" and tipo_pago != "Credito":
-        tipo_pago = input("Error - Como desea abonar(Debito/Efectivo/Credito): ").capitalize()
+        tipo_pago = input("ERROR - ¿Cuál será su método de pago? --> Debito/Efectivo/Credito: ").capitalize()
     return tipo_pago
   
 def credito(total):
-    print("Tiene hasta 24 cuotas, apartir de 3 se cobra un 5% de interes")
-    cuotas = int(input("Ingrese la cantidad de cuotas: "))
+    print()
+    print("---------------------------")
+    print("A TENER EN CUENTA")
+    print("Ofrecemos hasta 24 cuotas, pero a partir de 3 cuotas se aplica un 5% de interés en toda la compra.")
+    cuotas = int(input("Ingrese la cantidad de cuotas que desea: "))
     while cuotas<=0 or cuotas>24:
-        cuotas = int(input("ERROR - Ingrese la cantidad de cuotas: "))
+        cuotas = int(input("ERROR - Ingrese la cantidad de cuotas que desea: "))
     if cuotas>3:
         subtotal = total*1.05
     else:
@@ -217,7 +230,6 @@ def busqueda_lineal(lista,dato):
     return -1
     
 
-#listas
 facturas = []
 l_dni = []
 l_telefono = []
@@ -231,40 +243,31 @@ for c in range(3):
     lista_precios = [15000, 20000, 30000, 45000, 35000, 9000, 8000, 6000, 7000]
     lista_cantidad = [0, 0, 0, 0, 0, 0, 0, 0, 0]
 
-    #inicio de la venta
 
-    #bienvenida
     print("✮ BIENVENIDOS A LUDMILA - TIENDA DE ROPA FEMENINA ✮")
     print("--------------------------------")
 
-    #Datos del cliente
     nombre, apellido,dni,direccion,telefono,mail = datos_cliente()
 
-    #Creando lista de compra
     matriz = crear_matriz(lista_codigo,lista_articulos,lista_precios,lista_cantidad)
     mostrar_matriz(matriz)
 
     lista_cantidad = lista_compras(lista_cantidad)
 
-    n = input("Desea seguir comprando?(Si/No)").capitalize()
-
+    n = input("¿Desea seguir comprando? --> Si/No: ").capitalize()
     while n == "Si":
         matriz = crear_matriz(lista_codigo,lista_articulos,lista_precios,lista_cantidad)
-
         lista_cantidad = lista_compras(lista_cantidad)
-
-        n = input("Desea seguir comprando?(Si/No)").capitalize()
+        n = input("¿Desea seguir comprando? --> Si/No: ").capitalize()
 
     total = sumador_total(lista_cantidad,lista_precios)
 
     mostrar_compra(lista_cantidad, matriz)
 
-    #Envio
-    e = input("Quiere envio a domicilio(Si/No): ").capitalize()
+    e = input("¿Desea el envío de los productos a domicilio? --> Si/No: ").capitalize()
     if e == "Si":
         total, loc = envio(total)
         
-    #Factura
 
     t_p = total_prendas(lista_cantidad)
     t_c = total_calzado(lista_cantidad)
@@ -272,14 +275,13 @@ for c in range(3):
 
 
     if t_c>0 and t_a>0:
-        total = total*0.93 #descueto del 7%
+        total = total*0.93 
     pp, pc, pa = porcentajes(t_p, t_c, t_a)
 
     prom_p, prom_c, prom_a = promedios(lista_cantidad, lista_precios)
 
-    #Tipos de pago 
 
-    print("Su subtotal es",total,"Con que desea abonar?")
+    print("- Su subtotal es",total,". Con qué medio de pago desea abonar?")
 
     tipo_pago = medio_pago()
 
@@ -288,6 +290,8 @@ for c in range(3):
 
     print("\n════════════ FACTURA ════════════")
     print("Numero de factura",facturas[c-1])
+    print("Nombre del cliente", nombre)
+    print("Apellido del cliente", apellido)
     print("Dni:",dni)
     print("Direccion:",direccion)
     print("Numero de telefono:",telefono)
@@ -295,32 +299,33 @@ for c in range(3):
     print("Mail: ludmila@gmail.com") 
     print("Teléfono: 11 4875-8574")  
     print("CUIT: 30-68229475-7 ")
-    print("____________________________")
+    print()
+    print("-----------------------------")
     mostrar_compra(lista_cantidad,matriz)
     if e == "Si":
         if loc == "Caba":
-            print("Se sumo el costo de envio de 3000$")
+            print("Se sumó el costo de envío de $3000")
         elif loc == "Conurbano":
-            print("Se sumo el costo de envio de 4500$")
+            print("Se sumó el costo de envío de $4500")
         elif loc == "Interior":
-            print("Se sumo el costo de envio de 6500$")
+            print("Se sumó el costo de envío de $6500")
     print("El total de la compra es:", total)
 
     if t_p > 0:
-        print("Porcentaje Prendas:", round(pp,2), "%")
-        print("Promedio gastado por prenda: $", round(prom_p,2))
+        print("Porcentaje de prendas:", round(pp,2), "%")
+        print("Promedio gastado en prendas: $", round(prom_p,2))
 
     if t_c > 0:
         print("Porcentaje Calzado:", round(pc,2), "%")
-        print("Promedio gastado por calzado: $", round(prom_c,2))
+        print("Promedio gastado en calzado: $", round(prom_c,2))
 
     if t_a > 0:
         print("Porcentaje Accesorios:", round(pa,2), "%")
-        print("Promedio gastado por accesorio: $", round(prom_a,2))
+        print("Promedio gastado en accesorios: $", round(prom_a,2))
         
     if tipo_pago == "Credito":
-        print("Subtotal",subtotal,"Valor de cada cuota:",subtotal/cuotas)
-    separador()
+        print("- Subtotal",subtotal,
+              "- Valor de cada cuota: $",subtotal/cuotas)
    
    
     l_dni.append(dni)
@@ -333,14 +338,20 @@ usuarios = crear_matriz_2(facturas,l_dni,l_telefono,l_total)
 mostrar_matriz(usuarios)
 
 print("Facturas:", facturas)
+print("----------------------------")
+print("BÚSQUEDA DE FACTURA")
+print()
 
-
-num_fact = int(input("Ingrese el codigo de la factura que quiere buscar: "))
+num_fact = int(input("Ingrese el código de la factura que busca: "))
 posicion = busqueda_lineal(facturas,num_fact)
 if posicion == -1:
-    num_fact = int(input("ERROR Al ENCONTRA - Ingrese el codigo de la factura que quiere buscar: "))
-    posicion = busqueda_lineal(facturas,num_fact)
+    num_fact = int(input("ERROR FACTURA INVÁLIDA - Ingrese el código de la factura busca: "))
 else:
-    print("Factura encontrada en la posicion:", posicion)
+    print("Factura encontrada en la posición:", posicion)
     print("Factura:", usuarios[posicion])
+    
+print("-------------------------------------")   
+print("¡MUCHAS GRACIAS POR SU COMPRA, LOS ESPERAMOS NUEVAMENTE!")
+
+
 
